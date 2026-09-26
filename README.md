@@ -1,88 +1,89 @@
-# SysLens 🔍
+<img src="demo/logo.png" alt="pecha logo" style="float: left; margin-right: 15px;" width="950">
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/version-1.0.3-blue.svg)]()
-[![GitHub stars](https://img.shields.io/github/stars/mahmudul626/syslens.svg)](https://github.com/mahmudul626/syslens/stargazers)
+<p align="center">
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
+  <img src="https://img.shields.io/badge/version-2.0.0-blue.svg" alt="Version">
+  <a href="https://github.com/mahmudul626/pecha/stargazers"><img src="https://img.shields.io/github/stars/mahmudul626/pecha.svg" alt="GitHub stars"></a>
+</p>
 
-> *"It might have a messy codebase, but it does its job flawlessly. If it works for me, I think you'll find it useful too!"*
+<strong>Pecha</strong> is a fast, lightweight, and zero-dependency terminal-based system information utility built entirely from scratch. By directly leveraging Linux virtual filesystems and other system files, it offers a clean, minimal, and resource-efficient diagnostic tool free from heavy graphical dependencies.
 
-SysLens is a lightweight, terminal-based system information utility written in C. It leverages Linux's virtual filesystems and system files to produce a real-time snapshot of system health, hardware specifications, and resource usage.
+## Features
 
-## 🚀 Features
+#### System & OS Information
 
-- **System Overview:** Displays OS name, kernel version, CPU model, GPU information, temperature, uptime, current user, shell, product name, USB devices, and power supply details.
-- **Resource Monitoring:** Provides visual progress bars for RAM, swap, and disk usage, with color-coded alerts (green/yellow/red) for critical levels. Includes CPU usage percentage and load averages.
-- **Process Statistics:** Summarizes total tasks along with counts of running, sleeping, and zombie processes. Displays top memory-consuming processes.
-- **Hardware Monitoring:** Shows battery health and status for laptop systems.
-- **Performance Metrics:** Real-time system load averages over 1, 5, and 15 minutes.
-- **Lightweight & Fast:** Consumes minimal memory and runs without external dependencies.
+- OS & Kernel Details: Displays the current Linux distribution and kernel version.
+
+- Session Tracking: Shows system uptime, active shell environment, current username, and host system name.
+
+#### Hardware Specifications
+
+- Processor (CPU): Detects and displays CPU model name and clock frequency.
+
+- Graphics (GPU): Identifies the active graphics controller.
+
+- Host Machine: Shows the manufacturer and model name.
+
+#### Resource Monitoring & Telemetry
+
+- Live Visual Graphs: Uses custom ASCII progress bars for RAM, Swap, Disk, and CPU usage.
+
+- Performance Metrics: Tracks real-time memory consumption, disk occupancy, CPU load average, and live core temperature.
+
+#### Battery & Power Status
+
+- Battery Level: Real-time battery percentage tracking.
+
+- Time Estimation: Calculates remaining battery life during discharge or estimated time to full charge when plugged in.
+
+#### USB & External Device Tree
+
+- Hardware Enumeration: Tree-structured detection of connected USB ports and hardware peripherals.
+
+#### Process Management Table
+
+- Task Summary: Live overview of total running tasks categorized by state (Running, Sleeping, Zombie).
+
+- Resource-Intensive Process Table: Displays active processes sorted by resource usage, including PID, USER, STATUS, Resident Memory (RES), %MEM, and COMMAND.
 
 ## Screenshots
 
-![SysLens Demo](demo/demo.png)
+<img src="demo/demo.png" alt="pecha logo" style="float: left; margin-right: 15px;" width="850">
 
-## �📂 Project Structure
+## Installation
 
-The repository is organized as follows:
-
-```
-syslens/
-├── include/
-│   └── main.h        # Header definitions and function prototypes
-├── src/
-│   ├── main.c        # Program entry point and argument parsing
-│   ├── mem.c         # Memory, disk, and load average logic
-│   ├── proc.c        # Process parsing logic (/proc handling)
-│   └── sys.c         # OS and hardware info logic
-├── LICENSE           # MIT License
-├── Makefile          # Build automation script
-└── README.md         # This documentation
-```
-
-## 🛠 Installation
-
-### Prerequisites
+#### Prerequisites
 
 - Linux-based operating system
 - `gcc` compiler
 - `make` utility
 
-### Build from source
+#### Build from source
 
 1. Clone or download the repository.
+   ```bash
+   git clone https://github.com/mahmudul626/pecha.git
+   ```
 2. Enter the project directory:
    ```bash
-   cd syslens
+   cd pecha
    ```
 3. Compile the program:
    ```bash
    make
    ```
 
-### System-wide installation
+#### System-wide installation
 
-To install `syslens` so it can be run from anywhere:
+To install `pecha` so it can be run from anywhere:
 
 ```bash
 sudo make install
 ```
 
-## 📖 Usage
+## How it works
 
-Running without arguments displays all available information. Flags can be used to show specific sections:
-
-| Command            | Description                                         |
-|---------------------|-----------------------------------------------------|
-| `syslens`           | Show all system, resource, and process info        |
-| `syslens -s`        | Show only system info (OS, kernel, CPU, GPU, etc.) |
-| `syslens -m`        | Show resource usage (RAM, swap, disk, load average)|
-| `syslens -p`        | Show active process statistics                     |
-| `syslens --version` | Display the current version                        |
-| `syslens --help`    | Display the help menu                              |
-
-## ⚙️ How it works
-
-SysLens reads data from the Linux kernel's virtual `/proc` filesystem and other system files:
+**pecha** reads data from the Linux kernel's virtual filesystem and other system files:
 
 - **CPU & Hardware:** Parsed from `/proc/cpuinfo`, `/sys/class/dmi/id/product_name`, and GPU info from system files.
 - **Memory & Disk:** Information from `/proc/meminfo` and `statvfs` system call for disk usage calculations.
@@ -92,7 +93,7 @@ SysLens reads data from the Linux kernel's virtual `/proc` filesystem and other 
 - **USB Devices:** Enumerates devices from `/sys/bus/usb/devices/`.
 - **Temperature:** Reads thermal zone information from `/sys/class/thermal/`.
 
-## 🧹 Uninstallation
+## Uninstallation
 
 To remove the installed binary from the system:
 
@@ -100,22 +101,22 @@ To remove the installed binary from the system:
 sudo make uninstall
 ```
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 📊 Development
+## Development
 
-- **Version:** 1.0.3
+- **Version:** 2.0.0
 - **Language:** C
 - **Platform:** Linux
 - **Dependencies:** None (uses only standard C libraries and system files)
 
 ---
 
-*SysLens - Keep an eye on your system's vital signs!*
+*pecha - Keep an eye on your system's vital signs!*
 
