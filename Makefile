@@ -4,7 +4,7 @@ CFLAGS = -Iinclude -g
 
 SRCS = src/main.c src/proc.c src/sys.c src/mem.c
 
-TARGET = syslens
+TARGET = pecha
 
 all:
 		$(CC) $(CFLAGS) $(SRCS) -o $(TARGET)
