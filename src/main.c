@@ -30,9 +30,9 @@ void print_ui() {
 
     printf("\n");
 
-    printf("  " FETCH_KEY BOLD "%s" RESET FETCH_VAL " %s", "OS\t :", get.sys_attr.os_name);
+    printf("  " FETCH_KEY BOLD "%s" RESET FETCH_VAL " %-21s", "OS\t :", get.sys_attr.os_name);
     
-    printf("\t\t" HTOP_TEXT "Ram  " RESET);
+    printf(HTOP_TEXT "%s" RESET, "Ram  ");
     print_bar(get.mem_attr.bar, get.mem_attr.color);
     printf("%s" " %d%%" RESET HTOP_TEXT" %s\n" RESET, get.mem_attr.color, get.mem_attr.percent, get.mem_attr.ram);
 
@@ -63,10 +63,10 @@ void print_ui() {
 
 
 
-    printf("  " FETCH_KEY BOLD "%-8s" RESET FETCH_VAL "%s", "User   : ", get.sys_attr.user);
+    printf("  " FETCH_KEY BOLD "%-8s" RESET FETCH_VAL "%-21s", "User   : ", get.sys_attr.user);
     
     
-    printf("\t" HTOP_TEXT "Load average: %s\n" RESET, get.mem_attr.load_avg);
+    printf(HTOP_TEXT "Load average: %s\n" RESET, get.mem_attr.load_avg);
 
 
     printf("  " FETCH_KEY BOLD "%s" RESET FETCH_VAL "%s%% %-10s", "Bat\t : ", get.sys_attr.b_capacity, get.sys_attr.b_ch_predict);
