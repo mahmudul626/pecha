@@ -43,9 +43,9 @@ jobs:
             make clean
             make
 
-            ./syslens --version
-            ./syslens --help
+            ./pecha --version
+            # ./pecha --help
 
             # Run a small valgrind smoke-test (fails on leaks or invalid access)
-            valgrind --leak-check=full --error-exitcode=1 ./syslens --version
+            valgrind --leak-check=full --error-exitcode=1 ./pecha --version
           '

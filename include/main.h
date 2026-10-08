@@ -12,7 +12,7 @@
 #define BUFFER_SIZE 2024
 #define OS_NAME_MAX 64
 #define MAX_BAR 10
-#define VERSION "1.0.0"
+#define VERSION "2.0.0"
 extern unsigned long totalram;
 
 #define RED "\033[1;31m"

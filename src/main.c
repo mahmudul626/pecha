@@ -171,9 +171,12 @@ for (int i = 0; i < pindex; i++) {
 
 }
 
-int main() {
-    
-    print_ui();
-    return 0;
+int main(int argc, char *argv[])
+{
+     	if(argc == 1) {
+		print_ui();
+	} else if( argc > 1 && strcmp(argv[1], "--version") == 0) {
+		printf("Pecha %s\n", VERSION);
+	}
+    	return 0;
 }
-
