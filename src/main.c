@@ -95,12 +95,21 @@ void print_ui() {
     
     
     if (get_usb) {
+        int last_usb = -1;
+
         for (int i = 0; i < usb_count; i++) {
             if (get_usb[i] && get_usb[i]->sys_attr.usb) {
-		     if(usb_count > 1 && i != 1)
-			    printf("  ├%s", get_usb[i]->sys_attr.usb);
-		     else
-			    printf("  └%s", get_usb[i]->sys_attr.usb);
+                last_usb = i;
+            }
+        }
+
+        for (int i = 0; i < usb_count; i++) {
+            if (get_usb[i] && get_usb[i]->sys_attr.usb) {
+                if (i == last_usb) {
+                    printf("  └%s", get_usb[i]->sys_attr.usb);
+                } else {
+                    printf("  ├%s", get_usb[i]->sys_attr.usb);
+                }
             }
         }
     }
