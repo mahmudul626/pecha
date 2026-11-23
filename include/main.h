@@ -108,5 +108,6 @@ void product_name(struct comp_info *);
 void temp(struct comp_info *);
 void usb(struct comp_info **, int *);
 void cpu_per(struct comp_info *);
+void get_net(int *, int *);
 
 #endif

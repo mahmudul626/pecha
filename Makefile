@@ -2,7 +2,7 @@ CC = gcc
 
 CFLAGS = -Iinclude -g
 
-SRCS = src/main.c src/proc.c src/sys.c src/mem.c
+SRCS = src/main.c src/proc.c src/sys.c src/mem.c src/net.c
 
 TARGET = pecha
 

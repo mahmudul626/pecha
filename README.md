@@ -30,6 +30,8 @@
 
 - Performance Metrics: Tracks real-time memory consumption, disk occupancy, CPU load average, and live core temperature.
 
+- Network Traffic: Displays total downloaded (`↓`) and uploaded (`↑`) network data in MiB.
+
 #### Battery & Power Status
 
 - Battery Level: Real-time battery percentage tracking.
@@ -92,6 +94,7 @@ sudo make install
 - **Power & Battery:** Reads from `/sys/class/power_supply/` for battery and power information.
 - **USB Devices:** Enumerates devices from `/sys/bus/usb/devices/`.
 - **Temperature:** Reads thermal zone information from `/sys/class/thermal/`.
+- **Network:** Reads network interface statistics (RX/TX bytes) from `/proc/net/dev`.
 
 ## Uninstallation
 

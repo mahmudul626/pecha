@@ -27,6 +27,8 @@ void print_ui() {
     load_avg(&get);
     cpu_per(&get);
     proc(&get, getplist, &pindex);
+    int download = 0, upload = 0;
+    get_net(&download, &upload);
 
     printf("\n");
 
@@ -80,8 +82,8 @@ void print_ui() {
     
     
     
-   // printf( HTOP_TEXT "Net: \u2191 195 kb/s \u2193 35 kb/s\n" RESET);
-      printf("\n");
+    printf( HTOP_TEXT "Net: \u2193 %d MiB \u2191 %d MiB\n" RESET, download, upload);
+
 
     printf("  " FETCH_KEY BOLD "%s" RESET FETCH_VAL "%s\n", "Host\t : ", get.sys_attr.product);
     
