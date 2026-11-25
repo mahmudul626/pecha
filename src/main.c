@@ -40,7 +40,7 @@ void destroy_comp_info(struct comp_info *info) {
 
 
 void print_ui() {
-    struct comp_info get, getplist[2024], *get_usb[80];
+    struct comp_info get = {0}, getplist[2024] = {0}, *get_usb[80] = {0};
     int usb_count = 0, pindex = 0;
     usb(get_usb, &usb_count);
     getos(&get);
@@ -122,11 +122,9 @@ void print_ui() {
     printf("  " FETCH_KEY BOLD "%s" RESET FETCH_VAL "%s\n", "Proc\t : ", get.sys_attr.cpu);
     
     
-    if(usb_count > 0)
-	    printf("  " FETCH_KEY BOLD "%s" RESET FETCH_VAL "\n", "Usb");
-    
-    
-    if (get_usb) {
+    if(usb_count > 0) {
+	printf("  " FETCH_KEY BOLD "%s" RESET FETCH_VAL "\n", "Usb");
+
         int last_usb = -1;
 
         for (int i = 0; i < usb_count; i++) {
@@ -171,14 +169,11 @@ void print_ui() {
 
     printf("\n");
 
-
-    if (get_usb) {
-        for (int i = 0; i < usb_count; i++) {
-            if (get_usb[i]) {
+     for (int i = 0; i < usb_count; i++) {
+	     if (get_usb[i]) {
                 free(get_usb[i]->sys_attr.usb);
                 free(get_usb[i]);
-            }
-        }
+	     }
     }
 
     destroy_comp_info(&get);
