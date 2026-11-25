@@ -9,6 +9,36 @@
 #define FETCH_KEY       "\033[38;5;39m"                      
 #define FETCH_VAL       "\033[38;5;255m"
 
+void destroy_comp_info(struct comp_info *info) {
+    if (info == NULL) return;
+
+    free(info->sys_attr.os_name);
+    free(info->sys_attr.kernel);
+    free(info->sys_attr.user);
+    free(info->sys_attr.uptime);
+    free(info->sys_attr.shell);
+    free(info->sys_attr.b_capacity);
+    free(info->sys_attr.b_ch_predict);
+    free(info->sys_attr.gpu);
+    free(info->sys_attr.temp);
+    free(info->sys_attr.product);
+    free(info->sys_attr.cpu);
+
+    free(info->mem_attr.ram);
+    free(info->mem_attr.color);
+    free(info->mem_attr.disk);
+    free(info->mem_attr.disk_color);
+    free(info->mem_attr.swap);
+    free(info->mem_attr.swap_color);
+    free(info->mem_attr.cpu_color);
+    free(info->mem_attr.load_avg);
+
+    free(info->proc_attr.tasks);
+
+    *info = (struct comp_info){0};
+}
+
+
 void print_ui() {
     struct comp_info get, getplist[2024], *get_usb[80];
     int usb_count = 0, pindex = 0;
@@ -151,26 +181,7 @@ void print_ui() {
         }
     }
 
-    free(get.sys_attr.os_name);
-    free(get.sys_attr.kernel);
-    free(get.sys_attr.user);
-    free(get.sys_attr.uptime);
-    free(get.sys_attr.shell);
-    free(get.sys_attr.b_capacity);
-    free(get.sys_attr.b_ch_predict);
-    free(get.sys_attr.gpu);
-    free(get.sys_attr.temp);
-    free(get.sys_attr.product);
-    free(get.sys_attr.cpu);
-    free(get.mem_attr.ram);
-    free(get.mem_attr.color);
-    free(get.mem_attr.disk);
-    free(get.mem_attr.disk_color);
-    free(get.mem_attr.swap);
-    free(get.mem_attr.swap_color);
-    free(get.mem_attr.cpu_color);
-    free(get.mem_attr.load_avg);
-    free(get.proc_attr.tasks);
+    destroy_comp_info(&get);
 
 for (int i = 0; i < pindex; i++) {
     free(getplist[i].proc_attr.name);
